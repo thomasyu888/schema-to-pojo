@@ -60,7 +60,7 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 
 		// Make sure there is a call to super.
-		assertTrue(methodString.indexOf("result.append(super.toString());") > 0);
+		assertTrue(methodString.indexOf("__result.append(super.toString());") > 0);
 	}
 	
 	/**
@@ -86,8 +86,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 		
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"objectPropKeyName=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(objectPropKeyName);") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"objectPropKeyName=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(objectPropKeyName);") > 0);
 	}
 
 	/**
@@ -113,8 +113,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 		
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"arrayPropKeyName=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(arrayPropKeyName);") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"arrayPropKeyName=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(arrayPropKeyName);") > 0);
 	}
 	
 	/**
@@ -140,8 +140,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 		
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"doublePropKeyName=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(doublePropKeyName);") > 0);  
+		assertTrue(methodString.indexOf("__result.append(\"doublePropKeyName=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(doublePropKeyName);") > 0);  
 	}
 	
 	/**
@@ -167,8 +167,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 		
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"integerPropKeyName=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(integerPropKeyName);") > 0);  
+		assertTrue(methodString.indexOf("__result.append(\"integerPropKeyName=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(integerPropKeyName);") > 0);  
 	}
 	
 	/**
@@ -194,8 +194,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 		
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"booleanPropKeyName=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(booleanPropKeyName);") > 0);   
+		assertTrue(methodString.indexOf("__result.append(\"booleanPropKeyName=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(booleanPropKeyName);") > 0);   
 	}
 	
 	/**
@@ -221,8 +221,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 		
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"stringPropKeyName=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(stringPropKeyName);") > 0);  
+		assertTrue(methodString.indexOf("__result.append(\"stringPropKeyName=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(stringPropKeyName);") > 0);  
 	}
 
 	/**
@@ -259,17 +259,17 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 		
 		//verify method was created correctly
-		assertTrue(methodString.indexOf("java.lang.StringBuilder result;") > 0);
-		assertTrue(methodString.indexOf("result = new java.lang.StringBuilder();") > 0);
-		assertTrue(methodString.indexOf("result.append(\"\");") > 0);
-		assertTrue(methodString.indexOf("result.append(\"ImASampleClass\");") > 0);
-		assertTrue(methodString.indexOf("result.append(\" [\");") > 0);
-		assertTrue(methodString.indexOf("result.append(\"imABooleanMemberVariable=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(imABooleanMemberVariable);") > 0);
-		assertTrue(methodString.indexOf("result.append(\"imAStringMemberVariable=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(imAStringMemberVariable);") > 0);
-		assertTrue(methodString.indexOf("result.append(\"]\");") > 0);
-		assertTrue(methodString.indexOf("return result.toString();") > 0);    
+		assertTrue(methodString.indexOf("java.lang.StringBuilder __result;") > 0);
+		assertTrue(methodString.indexOf("__result = new java.lang.StringBuilder();") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"ImASampleClass\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(\" [\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"imABooleanMemberVariable=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(imABooleanMemberVariable);") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"imAStringMemberVariable=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(imAStringMemberVariable);") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"]\");") > 0);
+		assertTrue(methodString.indexOf("return __result.toString();") > 0);    
 	}
 
 	/**
@@ -295,8 +295,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"mapPropName=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(mapPropName);") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"mapPropName=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(mapPropName);") > 0);
 	}
 
 	/**
@@ -322,8 +322,8 @@ public class ToStringHandlerImpl03Test {
 		String methodString = declareToString(method);
 
 		//verify everything was created correctly
-		assertTrue(methodString.indexOf("result.append(\"_enum=\");") > 0);
-		assertTrue(methodString.indexOf("result.append(_enum);") > 0);
+		assertTrue(methodString.indexOf("__result.append(\"_enum=\");") > 0);
+		assertTrue(methodString.indexOf("__result.append(_enum);") > 0);
 	}
 
 	/**

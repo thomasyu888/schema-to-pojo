@@ -24,6 +24,9 @@ import com.sun.codemodel.JVar;
  *
  */
 public class ToStringHandlerImpl03 implements ToStringHandler {
+
+	// Prefix for local variables so they do not collide with property names.
+	private static final String VAR_PREFIX = "__";
 	
 	/**
 	 * Add toString() to the POJO
@@ -76,7 +79,7 @@ public class ToStringHandlerImpl03 implements ToStringHandler {
 		}
 		
 		//declare the StringBuilder
-		JVar result = body.decl(classType.owner().ref(StringBuilder.class), "result");
+		JVar result = body.decl(classType.owner().ref(StringBuilder.class), VAR_PREFIX + "result");
 		JExpression newStBuilder = JExpr._new(classType.owner().ref(StringBuilder.class));
 		body.assign(result, newStBuilder);
 		

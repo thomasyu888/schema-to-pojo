@@ -21,6 +21,9 @@ import com.sun.codemodel.JVar;
 
 public class HashAndEqualsHandlerImpl03 implements HashAndEqualsHandler {
 
+	// Prefix for local variables so they do not collide with property names.
+	private static final String VAR_PREFIX = "__";
+
 	@Override
 	public void addHashAndEquals(ObjectSchema classSchema,	JDefinedClass classType) {
 		// There is nothing to do for interfaces.
@@ -45,7 +48,7 @@ public class HashAndEqualsHandlerImpl03 implements HashAndEqualsHandler {
 		method.annotate(Override.class);
 		// Start on the body
 		JBlock body = method.body();
-		JVar prime = body.decl(JMod.FINAL, classType.owner().INT, "prime", JExpr.lit(31));
+		JVar prime = body.decl(JMod.FINAL, classType.owner().INT, VAR_PREFIX + "prime", JExpr.lit(31));
 		// If we have a super then we use that to initialize the result
 		JExpression resultInit = null;
 		if(classSchema.getExtends() != null){
@@ -54,7 +57,7 @@ public class HashAndEqualsHandlerImpl03 implements HashAndEqualsHandler {
 			// With no super() result starts as 1
 			resultInit = JExpr.lit(1);
 		}
-		JVar result = body.decl(JMod.NONE, classType.owner().INT, "result", resultInit);
+		JVar result = body.decl(JMod.NONE, classType.owner().INT, VAR_PREFIX + "result", resultInit);
 //		JVar addition = body.decl(JMod.NONE, classType.owner().INT, "addition", JExpr.lit(0));
 		// This is used for doubles
 		JVar temp = null;
@@ -103,7 +106,7 @@ public class HashAndEqualsHandlerImpl03 implements HashAndEqualsHandler {
 		// Create the equals() method
 		JMethod method = classType.method(JMod.PUBLIC, classType.owner().BOOLEAN, "equals");
 		method.annotate(Override.class);
-		JVar obj = method.param(classType.owner().ref(Object.class), "obj");
+		JVar obj = method.param(classType.owner().ref(Object.class), VAR_PREFIX + "obj");
 		// Build up the body
 		JBlock body = method.body();
 		body._if(JOp.eq(JExpr._this(), obj))._then()._return(JExpr.lit(true));
@@ -117,7 +120,7 @@ public class HashAndEqualsHandlerImpl03 implements HashAndEqualsHandler {
 
 		body._if(JOp.ne(JExpr._this().invoke("getClass"), obj.invoke("getClass")))._then()._return(JExpr.lit(false));
 		// declare the other
-		JVar other = body.decl(JMod.NONE, classType, "other", JExpr.cast(classType, obj));
+		JVar other = body.decl(JMod.NONE, classType, VAR_PREFIX + "other", JExpr.cast(classType, obj));
 		
 		// Now process each property
 		Map<String, ObjectSchema> fieldMap = classSchema.getObjectFieldMap();
