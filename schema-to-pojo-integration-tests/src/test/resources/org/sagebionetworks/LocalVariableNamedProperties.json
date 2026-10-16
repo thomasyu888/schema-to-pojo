@@ -1,0 +1,16 @@
+{
+	"properties":{
+		"result":{
+			"type":"boolean"
+		},
+		"prime":{
+			"type":"integer"
+		},
+		"obj":{
+			"type":"string"
+		},
+		"other":{
+			"type":"string"
+		}
+	}
+}

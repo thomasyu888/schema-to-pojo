@@ -69,7 +69,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("result = ((prime*result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
 	}
 	
 	@Test
@@ -89,7 +89,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
 		// Make sure there is a call to super.
-		assertTrue(methodString.indexOf("int result = super.hashCode();") > 0);
+		assertTrue(methodString.indexOf("int __result = super.hashCode();") > 0);
 //		printClassToConsole(childClasss);
 	}
 	
@@ -111,7 +111,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
 		// Make sure there is a call to super.
-		assertTrue(methodString.indexOf("result = ((prime*result)+((fromInterface == null)? 0 :fromInterface.hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((fromInterface == null)? 0 :fromInterface.hashCode()));") > 0);
 	}
 	
 	@Test
@@ -125,7 +125,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("result = ((prime*result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
 	}
 	
 	@Test
@@ -146,7 +146,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("result = ((prime*result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
 	}
 	
 	@Test
@@ -165,8 +165,8 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("result = ((prime*result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
-		assertTrue(methodString.indexOf("result = ((prime*result)+((propertyName2 == null)? 0 :propertyName2 .hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((propertyName2 == null)? 0 :propertyName2 .hashCode()));") > 0);
 	}
 	
 	@Test
@@ -182,7 +182,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("result = ((prime*result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
 	}
 	
 	@Test
@@ -198,7 +198,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("result = ((prime*result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
+		assertTrue(methodString.indexOf("__result = ((__prime*__result)+((propertyName == null)? 0 :propertyName.hashCode()));") > 0);
 	}
 	
 	@Test
@@ -224,15 +224,15 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertEquals(codeModel.ref(Object.class), method.params().iterator().next().type());
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("if (this == obj) {") > 0);
-		assertTrue(methodString.indexOf("if (obj == null) {") > 0);
+		assertTrue(methodString.indexOf("if (this == __obj) {") > 0);
+		assertTrue(methodString.indexOf("if (__obj == null) {") > 0);
 		// Super should not be called for this case
-		assertFalse(methodString.indexOf("if (!super.equals(obj)) {") > 0);
-		assertTrue(methodString.indexOf("if (this.getClass()!= obj.getClass()) {") > 0);
-		assertTrue(methodString.indexOf("Sample other = ((Sample) obj);") > 0);
+		assertFalse(methodString.indexOf("if (!super.equals(__obj)) {") > 0);
+		assertTrue(methodString.indexOf("if (this.getClass()!= __obj.getClass()) {") > 0);
+		assertTrue(methodString.indexOf("Sample __other = ((Sample) __obj);") > 0);
 		assertTrue(methodString.indexOf("if (propertyName == null) {") > 0);
-		assertTrue(methodString.indexOf("if (other.propertyName!= null) {") > 0);
-		assertTrue(methodString.indexOf("if (!propertyName.equals(other.propertyName)) {") > 0);
+		assertTrue(methodString.indexOf("if (__other.propertyName!= null) {") > 0);
+		assertTrue(methodString.indexOf("if (!propertyName.equals(__other.propertyName)) {") > 0);
 	}
 	
 	@Test
@@ -252,9 +252,9 @@ public class HashAndEqualsHandlerImpl03Test {
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
 		// Make sure there is a call to super.
-		assertTrue(methodString.indexOf("if (!super.equals(obj)) {") > 0);
-		assertFalse(methodString.indexOf("if (obj == null) {") > 0);
-		assertTrue(methodString.indexOf("ChildOfSample other = ((ChildOfSample) obj);") > 0);
+		assertTrue(methodString.indexOf("if (!super.equals(__obj)) {") > 0);
+		assertFalse(methodString.indexOf("if (__obj == null) {") > 0);
+		assertTrue(methodString.indexOf("ChildOfSample __other = ((ChildOfSample) __obj);") > 0);
 //		printClassToConsole(childClasss);
 	}
 	
@@ -276,7 +276,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
 		// Make sure there is a call to super.
-		assertTrue(methodString.indexOf("if (!fromInterface.equals(other.fromInterface))") > 0);
+		assertTrue(methodString.indexOf("if (!fromInterface.equals(__other.fromInterface))") > 0);
 	}
 	
 	@Test
@@ -291,8 +291,8 @@ public class HashAndEqualsHandlerImpl03Test {
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
 		assertTrue(methodString.indexOf("if (propertyName == null) {") > 0);
-		assertTrue(methodString.indexOf("if (other.propertyName!= null) {") > 0);
-		assertTrue(methodString.indexOf("if (!propertyName.equals(other.propertyName)) {") > 0);
+		assertTrue(methodString.indexOf("if (__other.propertyName!= null) {") > 0);
+		assertTrue(methodString.indexOf("if (!propertyName.equals(__other.propertyName)) {") > 0);
 	}
 	
 	@Test
@@ -314,8 +314,8 @@ public class HashAndEqualsHandlerImpl03Test {
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
 		assertTrue(methodString.indexOf("if (propertyName == null) {") > 0);
-		assertTrue(methodString.indexOf("if (other.propertyName!= null) {") > 0);
-		assertTrue(methodString.indexOf("if (!propertyName.equals(other.propertyName)) {") > 0);
+		assertTrue(methodString.indexOf("if (__other.propertyName!= null) {") > 0);
+		assertTrue(methodString.indexOf("if (!propertyName.equals(__other.propertyName)) {") > 0);
 	}
 	
 	@Test
@@ -331,7 +331,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("if (!propertyName.equals(other.propertyName))") > 0);
+		assertTrue(methodString.indexOf("if (!propertyName.equals(__other.propertyName))") > 0);
 	}
 	
 	@Test
@@ -347,7 +347,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("if (!propertyName.equals(other.propertyName))") > 0);
+		assertTrue(methodString.indexOf("if (!propertyName.equals(__other.propertyName))") > 0);
 	}
 	
 	@Test
@@ -363,7 +363,7 @@ public class HashAndEqualsHandlerImpl03Test {
 		assertNotNull(method);		
 		String methodString = declareToString(method);
 //		System.out.println(methodString);
-		assertTrue(methodString.indexOf("if (!propertyName.equals(other.propertyName)) {") > 0);
+		assertTrue(methodString.indexOf("if (!propertyName.equals(__other.propertyName)) {") > 0);
 	}
 	
 	/**
